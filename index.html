@@ -1,25 +1,306 @@
 <!DOCTYPE html>
-<html lang="en>
-    <head>
-        <meta charset="utf-8">
-        <title>butt licker</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
-    </head>
-    <body>
-        <h1> THIS IS A WEBSITE! ESTE ES UN SITIO WEB! これはウェブサイトです。Αυτός είναι ένας ιστότοπος. Hoc est situs interretialis. </h1>
-        <p> This is a virtual space where I can document my thoughts, feelings, opinions and all the fun things in between. I'm excited
-        to see where this takes me. At the moment I am simply just playing around and giving coding a go. Those are words I'd never thought
-        I would be typing. Life is full of little surprises. </p>
-        <p> I hope by being vulnerable, it will inspire others to become not only vulnerable with themselves but the ones they surround themselves 
-        with too. We are all on this strange journey together, just trying to keep our hands and feet inside the ride. </p>
-        <p> Click one of the buttons below to discover your true destiny. </p>
-        <p> Caution should be advised! </p>
-        <button type="button">bitch</button>
-        <button type="button" onclick="alert('you smell like beef!')">sniff sniff</button>
-    </body>
-    <img src="image-test.jpg" />
-    </body>
-    <img src="image-test.jpg" />
-    <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A clean, responsive HTML and CSS blog template.">
+    <title>Minimalist Blog Template</title>
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --bg-color: #f9f9fb;
+            --card-bg: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #666666;
+            --accent: #2563eb;
+            --border: #e5e7eb;
+            --max-width: 1200px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0f172a;
+                --card-bg: #1e293b;
+                --text-main: #f8fafc;
+                --text-muted: #94a3b8;
+                --accent: #38bdf8;
+                --border: #334155;
+            }
+        }
+
+        /* Base Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: var(--accent);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* Header Navigation */
+        .site-header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            font-weight: 500;
+        }
+
+        /* Layout Container */
+        .main-container {
+            max-width: var(--max-width);
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+        @media (min-width: 768px) {
+            .main-container {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        /* Blog Feed (Left Side) */
+        .blog-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+        .post-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .post-image-wrapper {
+            background-color: #cbd5e1;
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            font-weight: 500;
+        }
+        .post-content {
+            padding: 1.75rem;
+        }
+        .post-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            display: flex;
+            gap: 1rem;
+        }
+        .post-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+        .post-excerpt {
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+        .read-more {
+            color: var(--accent);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Sidebar (Right Side) */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        @media (min-width: 768px) {
+            .sidebar {
+                position: sticky;
+                top: 5.5rem;
+                height: fit-content;
+            }
+        }
+        .widget {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        .widget-title {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+        .about-widget p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .category-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .category-list li a {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+        }
+        .category-count {
+            color: var(--text-muted);
+            background-color: var(--bg-color);
+            padding: 0.1rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border);
+            margin-top: 5rem;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="#" class="logo">Ink &amp; Thought</a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="main-container">
+        
+        <!-- Blog Feed -->
+        <main class="blog-feed" role="main">
+            
+            <!-- Article 1 -->
+            <article class="post-card">
+                <div class="post-image-wrapper">
+                    <!-- Placeholder: Replace with <img src="image.jpg" alt="..."> -->
+                    16:9 Featured Image Placeholder
+                </div>
+                <div class="post-content">
+                    <div class="post-meta">
+                        <time datetime="2026-11-03">November 3, 2026</time>
+                        <span>•</span>
+                        <span>Design &amp; Code</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="#">Designing for the Modern Web: A Shift Toward Semantic Elements</a>
+                    </h2>
+                    <p class="post-excerpt">
+                        How clean HTML markup and lightweight styles enhance site performance, readability, and accessibility across modern consumer devices.
+                    </p>
+                    <a href="#" class="read-more">Read Article &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="post-card">
+                <div class="post-image-wrapper">
+                    16:9 Featured Image Placeholder
+                </div>
+                <div class="post-content">
+                    <div class="post-meta">
+                        <time datetime="2026-10-28">October 28, 2026</time>
+                        <span>•</span>
+                        <span>Productivity</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="#">Minimizing Workspace Friction to Unlock Creative Velocity</a>
+                    </h2>
+                    <p class="post-excerpt">
+                        A critical look at why simple interfaces and strict file structures allow developers to spend less time configuring and more time building.
+                    </p>
+                    <a href="#" class="read-more">Read Article &rarr;</a>
+                </div>
+            </article>
+
+        </main>
+
+        <!-- Sidebar Widgets -->
+        <aside class="sidebar">
+            
+            <!-- Profile Widget -->
+            <section class="widget about-widget">
+                <h3 class="widget-title">About the Author</h3>
+                <p>Welcome to my corner of the web. I write comprehensive guides about clean code, responsive web architecture, and design principles.</p>
+            </section>
+
+            <!-- Categories Widget -->
+            <section class="widget">
+                <h3 class="widget-title">Categories</h3>
+                <ul class="category-list">
+                    <li><a href="#">Web Development <span class="category-count">12</span></a></li>
+                    <li><a href="#">Design Systems <span class="category-count">8</span></a></li>
+                    <li><a href="#">Productivity <span class="category-count">5</span></a></li>
+                    <li><a href="#">Technology <span class="category-count">14</span></a></li>
+                </ul>
+            </section>
+
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Ink &amp; Thought. All rights reserved.</p>
+    </footer>
+
+</body>
 </html>
