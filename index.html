@@ -1,21 +1,51 @@
 <!DOCTYPE html>
-<html lang="en>
-    <head>
-        <meta charset="utf-8">
-        <title>butt licker</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
-    </head>
-    <body>
-        <h1>My Website</h1>
-        <p>I can do as I like now</p>
-        <p>I made a website</p>
-        <p>I absolutely cannot beleive I managed to do this!</p>
-        <p>hello, brock</p>
-        <button type="button">bitch</button>
-        <button type="button" onclick="alert('you smell like beef!')">sniff sniff</button>
-     </body>
-     <img src="image-test.jpg" />
-     </body>
-     </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Minimal Blog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1><a href="index.html">My Minimal Blog</a></h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="posts">
+            <!-- Blog Post 1 -->
+            <article class="post-card">
+                <span class="date">November 3, 2026</span>
+                <h2><a href="post.html">Getting Started with GitHub Pages</a></h2>
+                <p>Learn how to host your simple static HTML blog for free using GitHub Pages in just a few clicks...</p>
+                <a href="post.html" class="read-more">Read More &rarr;</a>
+            </article>
+
+            <!-- Blog Post 2 -->
+            <article class="post-card">
+                <span class="date">October 28, 2026</span>
+                <h2><a href="#">Why Keep Web Design Simple?</a></h2>
+                <p>Fast loading speeds, clean layouts, and distraction-free reading make minimalistic CSS themes incredibly powerful...</p>
+                <a href="#" class="read-more">Read More &rarr;</a>
+            </article>
+        </section>
+
+        <aside id="about">
+            <h3>About Me</h3>
+            <p>Welcome to my corner of the internet. I write about coding, design, and building things for the web.</p>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 My Minimal Blog. Powered by clean HTML & CSS.</p>
+    </footer>
+
+</body>
 </html>
